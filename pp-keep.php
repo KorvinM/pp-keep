@@ -2,7 +2,7 @@
 /*
 Plugin Name: Private Posts Keep
 Description: Segregates Private Posts
-Version: 1
+Version: 1.2
 Author: Korvin M
 Author URI: http://korvin.org
 License: GPL2
@@ -16,9 +16,7 @@ if(!class_exists('kvnPPKeep'))
 		public function __construct() {
 			
 			add_action( 'pre_get_posts', array(&$this, 'rem_pp'));
-			/*the following seems determined to create the post twice, so is commented out
-			//add_action( 'wp_loaded', array(&$this, 'create'));
-			*/
+			add_action( 'wp_loaded', array(&$this, 'create'));
 			$kvnPPKeep_plugin = plugin_basename(__FILE__);
 			
 		}// END public function __construct
@@ -39,18 +37,17 @@ if(!class_exists('kvnPPKeep'))
 		
 		public function create(){
 			$post = '';
-			if( get_page_by_title('My post') == NULL )
+			if( get_page_by_title('Private Archive') == NULL )
 			// Create post object
 			$post = array(
-			  'post_title'    => 'My post',
-			  'post_content'  => 'This is my post.',
+			  'post_title'    => 'Private Archive',
 			  'post_status'   => 'private',
 			  'post_type'     => 'page',
 			  'post_content'   => 'Herein Lie your private posts'
 			);
 
 			// Insert the post into the database
-			wp_insert_post( $post );
+			return wp_insert_post( $post );
 			
 			$post_id = wp_insert_post( $post, true );//now you can use $post_id within add_post_meta or update_post_meta	
 		}
