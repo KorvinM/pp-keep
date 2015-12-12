@@ -23,6 +23,25 @@ if(!class_exists('kvnPPKeep'))
 	
 		/*
 		*/
+/**
+		 * Activate the plugin
+		 */
+		public static function activate()
+		{
+			// Do nothing
+		} // END public static function activate
+		/**
+		 * Deactivate the plugin
+		 */
+		public static function deactivate()
+		{
+		} // END public static function deactivate
+
+		public static function uninstall () {
+			if ( ! current_user_can( 'activate_plugins' ) )
+			    return;
+			
+		} // END public static function uninstall
 		public function rem_pp($query){
 			if( is_user_logged_in() ){
 			/*restrict to the posts page main query.
@@ -54,17 +73,13 @@ if(!class_exists('kvnPPKeep'))
 	
 
 		
-		public static function uninstall () {
-			if ( ! current_user_can( 'activate_plugins' ) )
-			    return;
-			
-		} // END public static function uninstall
-		
 	} // END class kvnPPKeep
 } // END if(!class_exists('kvnPPKeep'))
 
 if(class_exists('kvnPPKeep'))
 {
+	register_activation_hook(__FILE__, array('kvnPPKeep', 'activate'));
+	register_deactivation_hook(__FILE__, array('kvnPPKeep', 'deactivate'));
 	register_uninstall_hook(__FILE__, array('kvnPPKeep', 'uninstall'));
 	$kvnPPKeep = new kvnPPKeep();// instantiate the plugin class
 	//$kvnPPPage=$kvnPPKeep->create();
