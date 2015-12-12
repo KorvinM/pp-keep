@@ -82,7 +82,6 @@ if(class_exists('kvnPPKeep'))
 	register_deactivation_hook(__FILE__, array('kvnPPKeep', 'deactivate'));
 	register_uninstall_hook(__FILE__, array('kvnPPKeep', 'uninstall'));
 	$kvnPPKeep = new kvnPPKeep();// instantiate the plugin class
-	//$kvnPPPage=$kvnPPKeep->create();
 }
 
 if (!class_exists('kvnPPWidget')){
