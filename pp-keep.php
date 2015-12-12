@@ -18,7 +18,7 @@ if(!class_exists('kvnPPKeep'))
 			add_action( 'pre_get_posts', array(&$this, 'rem_pp'));
 			/*the following seems determined to create the post twice, so is commented out
 			//add_action( 'wp_loaded', array(&$this, 'create'));
-
+			*/
 			$kvnPPKeep_plugin = plugin_basename(__FILE__);
 			
 		}// END public function __construct
