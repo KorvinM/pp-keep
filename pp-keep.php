@@ -43,7 +43,7 @@ if(!class_exists('kvnPPKeep'))
 			
 		} // END public static function uninstall
 		public function rem_pp($query){
-			if( is_user_logged_in() ){
+			if( current_user_can('read_private_posts') ){
 			/*restrict to the posts page main query.
 			 *All other views (eg. category archives) unnaffected
 			 *http://codex.wordpress.org/Function_Reference/is_home
@@ -104,8 +104,8 @@ if (!class_exists('kvnPPWidget')){
 		// Creating widget front-end
 		// This is where the action happens
 		public function widget( $args, $instance ) {
-			if( is_user_logged_in() ){
 			
+			if( current_user_can('read_private_posts') ){
 				$title = apply_filters( 'widget_title', $instance['title'] );
 				// before and after widget arguments are defined by themes
 				echo $args['before_widget'];
