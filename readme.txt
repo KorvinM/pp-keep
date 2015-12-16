@@ -8,5 +8,4 @@ Removes private posts from the main query on the posts Page, adds a widget and c
 == To Do ==
 Add template and loop to Private Posts Page
 == Acknowledgments == 
-
-The basic structure is based on Plugin template courtesy Francis Yaconiello. 
+The WordPress community
