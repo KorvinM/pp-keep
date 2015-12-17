@@ -2,7 +2,7 @@
 /*
 Plugin Name: Private Posts Keep
 Description: Segregates Private Posts
-Version: 0.7.2
+Version: 0.7.3
 Author: Korvin M
 Author URI: http://korvin.org
 License: GPL2
@@ -13,9 +13,9 @@ require_once( __DIR__ . '/class-pp-keep.php' );
 require_once( __DIR__ . '/class-pp-keep-widget.php' );
 if( class_exists( 'PP_Keep' ) ) {
 	$PPKeep = new PP_Keep();// instantiate the plugin class
-	register_activation_hook(__FILE__, array('$kvnPPKeep', 'activate'));
-	register_deactivation_hook(__FILE__, array('$kvnPPKeep', 'deactivate'));
-	register_uninstall_hook(__FILE__, array('$kvnPPKeep', 'uninstall'));
+	register_activation_hook(__FILE__, array('$PPKeep', 'activate'));
+	register_deactivation_hook(__FILE__, array('$PPKeep', 'deactivate'));
+	register_uninstall_hook(__FILE__, array('$PPKeep', 'uninstall'));
 }
 
 if ( class_exists( 'PP_Keep_Widget' ) ) {
