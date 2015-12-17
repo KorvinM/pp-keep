@@ -1,8 +1,8 @@
 <?php
 
-if (!class_exists('kvnPPWidget')){
+if ( !class_exists( 'PP_Keep_Widget' ) ) {
 	
-	class kvnPPWidget extends WP_Widget {
+	class PP_Keep_Widget extends WP_Widget {
 
 		function __construct() {
 			parent::__construct(
@@ -80,5 +80,5 @@ if (!class_exists('kvnPPWidget')){
 			$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 			return $instance;
 		}
-	} // Class docs_widget ends here
+	} // Class PP_Keep_Widget ends here
 }
