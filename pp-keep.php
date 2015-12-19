@@ -19,7 +19,8 @@ if ( ! defined( 'WPINC' ) ) {
 //see http://wordpress.stackexchange.com/questions/108418/what-are-the-differences-between-wpinc-and-abspath for a brief discussion
 //can also do 
 //defined( 'ABSPATH' ) || exit;
-//but this contravenes WP php style guide on account of being too clever
+//but this could contravene WP php style guide on account of being too clever
+//however on parsing mentally as english I quite lie it. ABSPATH OR exit doesn't obscure meaning with cleverness, it arguably enhances it in this case
 define( 'PPKEEP_PATH', plugin_dir_path( __FILE__ ) );
 require_once( __DIR__ . '/class-pp-keep.php' );
 require_once( __DIR__ . '/class-pp-keep-widget.php' );
