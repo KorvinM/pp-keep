@@ -7,7 +7,7 @@ Author: Korvin M
 Author URI: http://korvin.org
 License: GPL2
 */
-//protect unauthorised access
+/* exist if directly accessed */
 defined( 'ABSPATH' ) || exit;
 define( 'PPKEEP_PATH', plugin_dir_path( __FILE__ ) );
 require_once( __DIR__ . '/class-pp-keep.php' );
