@@ -1,9 +1,7 @@
 <?php
 
 if ( !class_exists( 'PP_Keep_Widget' ) ) {
-	
 	class PP_Keep_Widget extends WP_Widget {
-
 		function __construct() {
 			parent::__construct(
 			// Base ID of your widget
@@ -16,10 +14,6 @@ if ( !class_exists( 'PP_Keep_Widget' ) ) {
 			array( 'description' => __( 'Displays a list of private posts for logged in users only.' ), ) 
 			);
 		}
-
-
-
-
 		// Creating widget front-end
 		// This is where the action happens
 		public function widget( $args, $instance ) {
