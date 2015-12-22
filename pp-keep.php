@@ -2,7 +2,7 @@
 /*
 Plugin Name: Private Posts Keep
 Description: Segregates Private Posts
-Version: 0.7.3
+Version: 0.7.5
 Author: Korvin M
 Author URI: http://korvin.org
 License: GPL2
