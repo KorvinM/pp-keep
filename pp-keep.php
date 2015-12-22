@@ -12,6 +12,7 @@ defined( 'ABSPATH' ) || exit;
 define( 'PPKEEP_PATH', plugin_dir_path( __FILE__ ) );
 require_once( __DIR__ . '/class-pp-keep.php' );
 require_once( __DIR__ . '/class-pp-keep-widget.php' );
+require_once( __DIR__ . '/class-template.php' );
 if( class_exists( 'PP_Keep' ) ) {
 	$PPKeep = new PP_Keep();// instantiate the plugin class
 	register_activation_hook(__FILE__, array('$PPKeep', 'activate'));
