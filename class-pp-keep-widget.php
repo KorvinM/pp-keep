@@ -30,7 +30,7 @@ if ( !class_exists( 'PP_Keep_Widget' ) ) {
 				  
 
 				$loopargs = array(
-						'posts_per_page' => -1,
+						'posts_per_page' => 3,
 						'post_type'=>'post',
 						'post_status'=> 'private');
 				$query = new WP_Query($loopargs);
@@ -46,7 +46,11 @@ if ( !class_exists( 'PP_Keep_Widget' ) ) {
 				</h4>
 
 				<?php endwhile; ?>
-
+				<?php
+				/*add link to all private posts page
+				/* default for now */
+				?>
+				<h4><a href="/private-archive">All Private Posts</a></h4>	
 				<?php echo $args['after_widget'];
 			}
 		}
