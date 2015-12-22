@@ -1,28 +1,18 @@
 <?php
 /**
- * The template for displaying pages
- *
+ * The template for displaying the Private Posts Page 
+ * Will ignore the normal page content and display a list of private posts, with excerpts
  */
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<div style="position:relative;">
 
+<p style="position:absolute; top:50%;left:50%; transform:translate(-50%, -50%);border-bottom: 1px solid #888">
+This page shows all your private posts. <br>
+</p>
+</div>
 		<?php
-		// Start the loop.
-		while ( have_posts() ) : the_post();
-
-			// Include the page content template.
-			get_template_part( 'content', 'page' );
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
-		// End the loop.
-		endwhile;
 		?>
 		<?php
 		//new query for private posts
@@ -33,7 +23,12 @@ get_header(); ?>
 
 			<!-- the loop -->
 			<?php while ( $pp_query->have_posts() ) : $pp_query->the_post(); ?>
-				<h2><?php the_title(); ?></h2>
+				<div class="entry-header">
+				<h2><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h2>
+				</div>
+				<div class="entry-excerpt">
+				<p><?php the_excerpt(); ?> </p>
+				</div>
 			<?php endwhile; ?>
 			<!-- end of the loop -->
 
@@ -45,7 +40,5 @@ get_header(); ?>
 		<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
 		<?php endif; ?>
 
-		</main><!-- .site-main -->
-	</div><!-- .content-area -->
 
 <?php get_footer(); ?>

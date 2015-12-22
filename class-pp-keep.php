@@ -47,7 +47,7 @@ if( !class_exists( 'PP_Keep' ) ) {
 			  'post_title'    => 'Private Archive',
 			  'post_status'   => 'private',
 			  'post_type'     => 'page',
-			  'post_content'   => 'Herein Lie your private posts'
+			  'post_content'   => 'This page has been created by the plugin Private Posts Keep. It is intended to show your private posts. Please select the Private Posts Page from the Page Template menu. This content will be overridden and your private posts will be displayed instead.'
 			);
 
 			// Insert the post into the database
