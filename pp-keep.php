@@ -14,9 +14,6 @@ require_once( __DIR__ . '/class-pp-keep.php' );
 require_once( __DIR__ . '/class-pp-keep-widget.php' );
 if( class_exists( 'PP_Keep' ) ) {
 	$PPKeep = new PP_Keep();// instantiate the plugin class
-	register_activation_hook(__FILE__, array('$PPKeep', 'activate'));
-	register_deactivation_hook(__FILE__, array('$PPKeep', 'deactivate'));
-	register_uninstall_hook(__FILE__, array('$PPKeep', 'uninstall'));
 }
 
 if ( class_exists( 'PP_Keep_Widget' ) ) {
@@ -26,3 +23,31 @@ if ( class_exists( 'PP_Keep_Widget' ) ) {
 	}
 	add_action( 'widgets_init', 'pp_load_widget' );
 }
+
+			$page = get_page_by_title('Private Archive');
+			if (isset($page)){
+				$page_id= $page->ID;
+			}
+		/**
+		 * Activate the plugin
+		 */
+		function activate()
+		{
+			// Do nothing
+		} // END public static function activate
+		/**
+		 * Deactivate the plugin
+		 */
+		function deactivate()
+		{
+			global $page_id;
+			wp_delete_post($page_id, true);
+		} // END public static function deactivate
+
+		function uninstall () {
+			if ( ! current_user_can( 'activate_plugins' ) )
+			    return;
+		} // END public static function uninstall
+	register_activation_hook(__FILE__, 'activate');
+	register_deactivation_hook(__FILE__, 'deactivate');
+	register_uninstall_hook(__FILE__, 'uninstall');
