@@ -28,7 +28,9 @@ if( !class_exists( 'PP_Keep' ) ) {
 			  'post_title'    => 'Private Archive',
 			  'post_status'   => 'private',
 			  'post_type'     => 'page',
-			  'post_content'   => 'Herein Lie your private posts'
+			  'post_content'   => 'This page is intended for your private posts.
+				<!--Below is a shortcode which will output them in a list -->
+				[private-posts]'
 			);
 
 			// Insert the post into the database
