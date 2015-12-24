@@ -33,7 +33,7 @@ if( !class_exists( 'PP_Keep' ) ) {
 
 			// Insert the post into the database
 			
-			$insert_post = wp_insert_post( $post, true );//now you can use $post_id within add_post_meta or update_post_meta	
+			$insert_post = wp_insert_post( $post, true);//now you can use $post_id within add_post_meta or update_post_meta	
 			return $insert_post;	
 		}
 	

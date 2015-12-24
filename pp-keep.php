@@ -25,10 +25,6 @@ if ( class_exists( 'PP_Keep_Widget' ) ) {
 	add_action( 'widgets_init', 'pp_load_widget' );
 }
 
-$page = get_page_by_title('Private Archive');
-if (isset($page)){
-	$page_id= $page->ID;
-}
 /**
  * Activate the plugin
  */
@@ -41,7 +37,10 @@ function activate()
  */
 function deactivate()
 {
-	global $page_id;
+	$page = get_page_by_title('Private Archive');
+	if (isset($page)){
+		$page_id= $page->ID;
+	}
 	wp_delete_post($page_id, true);
 } // END public static function deactivate
 
