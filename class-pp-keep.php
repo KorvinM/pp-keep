@@ -10,13 +10,13 @@ if( !class_exists( 'PP_Keep' ) ) {
 
 		public function rem_pp( $query ) {
 			if( current_user_can( 'read_private_posts' ) ){
-			/*restrict to the posts page main query.
-			 *All other views (eg. category archives) unnaffected
+			/*affects main query on posts page or archives.
+			 *http://codex.wordpress.org/Function_Reference/is_main_query
 			 *http://codex.wordpress.org/Function_Reference/is_home
-			 *http://codex.wordpress.org/Function_Reference/is_main_query*/
-				if ( $query->is_home() && $query->is_main_query() ) {
-					$query->set( 'post_status', 'publish' );
-				}
+			 *http://codex.wordpress.org/Function_Reference/is_archive*/
+				if ( $query->is_main_query() &&  $query->is_home() || $query->is_archive() ) {
+						$query->set( 'post_status', 'publish' );
+					}
 			}
 		}
 		
