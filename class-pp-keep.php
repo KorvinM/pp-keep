@@ -14,7 +14,7 @@ if( !class_exists( 'PP_Keep' ) ) {
 			 *All other views (eg. category archives) unnaffected
 			 *http://codex.wordpress.org/Function_Reference/is_home
 			 *http://codex.wordpress.org/Function_Reference/is_main_query*/
-				if ( $query->is_home() && $query->is_main_query() ) {
+				if ( $query->is_main_query() &&  $query->is_home() || $query->is_archive() ) {
 					$query->set( 'post_status', 'publish' );
 				}
 			}
