@@ -4,16 +4,15 @@
  * registers the shortcode needed to add to the Private Posts Page
 */
 function ppkeep_shortcode_return() {
-	 ob_start();
+	ob_start();
 	$pp_posts=array(
-		'posts_per_page' => 2,
+		'posts_per_page' => -1,
 		'post_type'=>'post',
 		'post_status'=> 'private',
 	);
-	
 	$query = new WP_Query($pp_posts);
 	if ($query->have_posts() ): ?>
-	<div>
+	<div class="loop_privateposts">
             <?php while ( $query->have_posts() ) : $query->the_post(); ?>
             <p id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
