@@ -4,8 +4,8 @@ if( !class_exists( 'PP_Keep' ) ) {
 		public function __construct() {
 			add_action( 'pre_get_posts', array(&$this, 'rem_pp'));
 			add_action( 'wp_loaded', array(&$this, 'create'));
-			add_filter( 'get_next_post_where', array(&$this, 'get_next_post_mod'));
-			add_filter( 'get_previous_post_where', array(&$this, 'get_previous_post_mod'));
+			add_filter( 'get_next_post_where', array(&$this, 'get_adjacent_post_mod'));
+			add_filter( 'get_previous_post_where', array(&$this, 'get_adjacent_post_mod'));
 			add_action( 'the_title', array(&$this, 'the_title_trim'));
 			$kvnPPKeep_plugin = plugin_basename(__FILE__);
 		}// END public function __construct
@@ -21,11 +21,12 @@ if( !class_exists( 'PP_Keep' ) ) {
 					}
 			}
 		}
+
 		/*
 		*filter get_adjacent_post
 		*/
 
-		public function get_next_post_mod($where){
+		public function get_adjacent_post_mod($where){
 			if (is_single()){
 				global $wpdb, $post;
 				if ( get_post_status ( ) == 'private' ) {
@@ -40,20 +41,6 @@ if( !class_exists( 'PP_Keep' ) ) {
 
 		}
 		
-		public function get_previous_post_mod($where){
-			if (is_single()){
-				global $wpdb, $post;
-				if ( get_post_status ( ) == 'private' ) {
-					$where = str_replace( "AND ( p.post_status = 'publish' OR p.post_status = 'private' )", "AND p.post_status = 'private'", $where );
-					return $where;	
-				} else {
-					$where = str_replace( "AND ( p.post_status = 'publish' OR p.post_status = 'private' )", "AND p.post_status = 'publish'", $where );
-					return $where;	
-				}
-
-			}
-
-		}
 		public function create(){
 			$post = '';
 			if( get_page_by_title('Private Archive') == NULL )
