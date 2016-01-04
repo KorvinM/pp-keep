@@ -10,6 +10,8 @@ License: GPL2
 /* exit if directly accessed */
 defined( 'ABSPATH' ) || exit;
 define( 'PPKEEP_PATH', plugin_dir_path( __FILE__ ) );
+
+require_once( __DIR__ . '/pp-keep-shortcode.php' );
 require_once( __DIR__ . '/class-pp-keep.php' );
 require_once( __DIR__ . '/class-pp-keep-widget.php' );
 if( class_exists( 'PP_Keep' ) ) {
